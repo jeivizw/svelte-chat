@@ -7,10 +7,11 @@
   let chatContainer = $state();
 
   const botReplies = [
-    "Sistema operando em modo minimalista de alta performance.",
+    "Sistema operando da melhor forma .",
     "Bifurcação de dados concluída. Renderização cirúrgica.",
-    "Interface limpa reduz a carga cognitiva do desenvolvedor.",
-    "A reatividade do Svelte funcionando sem interferência visual."
+    "Esse chat demorou um tempo pra ser feito.",
+    "O Svelte é curiosamente muito bom, mas tem q saber pensar um pouco pra fazer rodar."
+    "Queria deixar claro que este trabalho vai pro meu linkedin."
   ];
 
   function scrollToBottom() {
