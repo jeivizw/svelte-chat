@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>SvelteChat // Conexão Fluida</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      /* Previne o flash branco na tela antes do CSS do Svelte carregar */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #121214;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow: hidden;
+      }
+
+      /* Container do Loader Fluido */
+      .fluid-loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at center, #1a191f 0%, #121214 100%);
+      }
+
+      /* Animação dos balões de chat fluidos se fundindo */
+      .chat-bubble-loader {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        filter: url('#fluid-filter'); /* Aplica o efeito líquido/fluido */
+      }
+
+      .bubble-dot {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #ff3e00, #ff7300);
+        border-radius: 50%;
+        animation: float-around 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+      }
+
+      .bubble-dot:nth-child(2) {
+        background: linear-gradient(135deg, #00875f, #00b37e);
+        animation-delay: -1.25s;
+      }
+
+      .loader-text {
+        margin-top: 32px;
+        color: #a8a8b3;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        animation: pulse-text 1.5s ease-in-out infinite;
+      }
+
+      /* Movimento orgânico dos balões */
+      @keyframes float-around {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(40px, 10px) scale(1.2); }
+        50% { transform: translate(20px, 40px) scale(0.9); }
+        75% { transform: translate(-10px, 20px) scale(1.1); }
+      }
+
+      @keyframes pulse-text {
+        0%, 100% { opacity: 0.4; transform: scale(0.98); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+
+      /* Estilização da barra de rolagem para o chat */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #121214;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #29282e;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff3e00;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="app">
+      <div class="fluid-loader-container">
+        <div class="chat-bubble-loader">
+          <div class="bubble-dot"></div>
+          <div class="bubble-dot"></div>
+        </div>
+        <div class="loader-text">Iniciando ambiente reativo...</div>
+      </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+      <defs>
+        <filter id="fluid-filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="fluid-filter" />
+          <feComposite in="SourceGraphic" in2="fluid-filter" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
