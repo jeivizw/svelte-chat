@@ -10,7 +10,7 @@
     "Sistema operando da melhor forma .",
     "Bifurcação de dados concluída. Renderização cirúrgica.",
     "Esse chat demorou um tempo pra ser feito.",
-    "O Svelte é curiosamente muito bom, mas tem q saber pensar um pouco pra fazer rodar."
+    "O Svelte é curiosamente muito bom, mas tem q saber pensar um pouco pra fazer rodar.",
     "Queria deixar claro que este trabalho vai pro meu linkedin."
   ];
 
